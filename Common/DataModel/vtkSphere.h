@@ -95,6 +95,20 @@ public:
   static void ComputeBoundingSphere(
     double** spheres, vtkIdType numSpheres, double sphere[4], vtkIdType hints[2]);
   ///@}
+  
+  ///@{
+  /**
+   * Create a bounding sphere from a set of points. The set of points is
+   * defined by an array of doubles or an array of floats, in the order of x-y-z
+   * (which repeats for each point). The output sphere consists of a
+   * center (x-y-z) and a radius.
+   */
+  template <class T>
+  static void ComputeBoundingSphere(T* pts, vtkIdType numPts, double sphere[4])
+  {
+    return ComputeBoundingSphere(pts, numPts, sphere, nullptr);
+  }
+  ///@}
 
 protected:
   vtkSphere();
